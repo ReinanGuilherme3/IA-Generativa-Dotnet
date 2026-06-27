@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/01-Embeddings/">
+    <Project Path="src/01-Embeddings/IAGenerativa.Embeddings/IAGenerativa.Embeddings.csproj" Id="fda8808a-36a1-45d8-8fe7-e2ca1918dd5f" />
+  </Folder>
+</Solution>
