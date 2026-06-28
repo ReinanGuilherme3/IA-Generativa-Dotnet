@@ -48,7 +48,7 @@ Textos com significados parecidos geram vetores próximos no espaço vetorial, p
 
 ## ▶️ Pré-requisitos
 
-- [.NET 9 SDK](https://dotnet.microsoft.com/download)
+- [.NET 10 SDK](https://dotnet.microsoft.com/download)
 - [Docker](https://www.docker.com/)
 
 ---
@@ -61,6 +61,11 @@ docker-compose up -d
 ```
 
 Isso vai iniciar o PostgreSQL com pgvector e o Ollama, e já faz o download do modelo `mxbai-embed-large` automaticamente.
+
+**Para derrubar os serviços**
+```bash
+docker-compose down
+```
 
 **2. Aplique as migrations**
 ```bash
