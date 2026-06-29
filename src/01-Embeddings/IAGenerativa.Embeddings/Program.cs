@@ -27,7 +27,7 @@ app.MapGet("v1/seed", async (AppDbContext dbContext, OllamaApiClient ollamaApiCl
     foreach (var product in products)
     {
         var service = ollamaApiClient.AsTextEmbeddingGenerationService();
-        var embeddings = await service.GenerateEmbeddingAsync(product.Description);
+        var embeddings = await service.GenerateEmbeddingAsync(product.Category);
 
         var recomendation = new Recomendation
         {
