@@ -10,8 +10,11 @@
     <PackageReference Include="Dapper" Version="2.1.79" />
     <PackageReference Include="FluentMigrator.Runner.Postgres" Version="8.0.1" />
     <PackageReference Include="Microsoft.SemanticKernel.Connectors.Ollama" Version="1.77.0-alpha" />
+    <PackageReference Include="Microsoft.SemanticKernel.Connectors.PgVector" Version="1.74.0-preview" />
     <PackageReference Include="Npgsql" Version="10.0.3" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.2" />
     <PackageReference Include="OllamaSharp" Version="5.4.25" />
+    <PackageReference Include="Pgvector.EntityFrameworkCore" Version="0.3.0" />
   </ItemGroup>
 
 </Project>
