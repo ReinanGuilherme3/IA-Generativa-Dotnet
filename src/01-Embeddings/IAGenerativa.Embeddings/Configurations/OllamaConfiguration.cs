@@ -11,7 +11,7 @@ public static class OllamaConfiguration
 
         var ollamaClient = new OllamaApiClient(uriString: ollama.Endpoint, defaultModel: ollama.Model);
 
-        services.AddSingleton<IOllamaApiClient>(ollamaClient);
+        services.AddTransient<OllamaApiClient>(x => ollamaClient);
         services.AddSingleton(ollamaClient.AsTextEmbeddingGenerationService());
 
         return services;

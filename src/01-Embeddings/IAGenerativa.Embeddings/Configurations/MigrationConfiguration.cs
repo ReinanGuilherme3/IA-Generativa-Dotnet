@@ -1,11 +1,18 @@
 using FluentMigrator.Runner;
+using IAGenerativa.Embeddings.Data;
 using IAGenerativa.Embeddings.Data.Migrations;
+using Microsoft.EntityFrameworkCore;
 
 namespace IAGenerativa.Embeddings.Configurations;
 
 public static class MigrationConfiguration
 {
-    public static IServiceCollection AddMigrationConfiguration(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddDataConfiguration(this IServiceCollection services, IConfiguration configuration)
+    => services
+            .AddMigrationConfiguration(configuration)
+            .AddAppDbContext(configuration);
+
+    private static IServiceCollection AddMigrationConfiguration(this IServiceCollection services, IConfiguration configuration)
     {
         var connectionString = configuration.GetConnectionString("Connection")!;
 
@@ -16,6 +23,18 @@ public static class MigrationConfiguration
                 .WithGlobalConnectionString(connectionString)
                 .ScanIn(typeof(DatabaseMigration).Assembly).For.Migrations())
             .AddLogging(lb => lb.AddFluentMigratorConsole());
+
+        return services;
+    }
+
+    private static IServiceCollection AddAppDbContext(this IServiceCollection services, IConfiguration configuration)
+    {
+        var connectionString = configuration.GetConnectionString(name: "DefaultConnection");
+
+        services.AddDbContext<AppDbContext>(options =>
+        {
+            options.UseNpgsql(connectionString, o => o.UseVector());
+        });
 
         return services;
     }
